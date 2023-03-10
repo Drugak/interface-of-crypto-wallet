@@ -1,5 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import { ethers } from "ethers";
 
 function App() {
   return (
