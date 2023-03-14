@@ -1,26 +1,37 @@
-import './App.css';
-import { useState } from "react";
-import { ethers } from "ethers";
+import React from "react";
+import Wallet from "./components/Wallet";
+import AccountInfo from "./components/AccountInfo";
+import News from "./components/News/News";
+import './App.scss';
+import store from "./store";
+import {setAppState, setAccount} from "./action";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const { ethereum } = window;
+    const setDisconnectState = () => {
+        store.dispatch(setAppState({
+            connected: false
+        }));
+        store.dispatch(setAccount({
+            account: null
+        }))
+    }
+
+    if (!ethereum.isMetaMask) {
+
+    }
+
+    ethereum.on('accountsChanged', setDisconnectState);
+    ethereum.on('disconnect', setDisconnectState);
+    ethereum.on('chainChanged', setDisconnectState);
+
+
+
+    return (
+        <div className="crypto-app">
+            <Wallet/>
+            <AccountInfo />
+            <News />
+        </div>
+    );
 }
-
-export default App;

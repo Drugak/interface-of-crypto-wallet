@@ -1,0 +1,44 @@
+.crypto-app {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+
+  &_section {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+
+    .box {
+      display: flex;
+      align-items: self-start;
+      flex-flow: column;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    }
+
+    .connect-box {
+      .connect-status {
+        color: #077568;
+        margin-bottom: 10px;
+        &.disconnect {
+          color: #a4373a;
+        }
+      }
+    }
+
+    &.news-section {
+      background-color: white;
+      box-shadow: inset rgb(0 0 0 / 21%) 1px 0px 10px -1px;
+      height: 100vh;
+      box-sizing: border-box;
+      overflow: auto;
+    }
+  }
+}
