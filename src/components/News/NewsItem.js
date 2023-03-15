@@ -1,9 +1,9 @@
 import React from "react";
 import {Link} from '@fluentui/react';
 
-const NewsItem = ({title, content, link, key}) => {
+const NewsItem = ({title, content, link}) => {
     return (
-        <section key={key} className='news-item'>
+        <section className='news-item'>
             <div className='news-body box'>
                 <h3>{title}</h3>
                 <p className="content">{content}</p>

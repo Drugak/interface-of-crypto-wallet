@@ -4,10 +4,16 @@
   flex-flow: row;
   align-items: flex-start;
 
+  $breakpoint-tablet: 960px;
+  @media (max-width: $breakpoint-tablet) {
+    flex-flow: column;
+  }
+
   &_section {
     display: flex;
     flex-flow: column;
     align-items: center;
+    box-sizing: border-box;
     width: 100%;
     padding: 10px 20px;
 
@@ -21,6 +27,7 @@
       border-radius: 5px;
       background-color: #fff;
       box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px;
+      margin-bottom: 15px;
     }
 
     .connect-box {

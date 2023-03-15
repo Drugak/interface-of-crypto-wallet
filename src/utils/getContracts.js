@@ -1,4 +1,6 @@
 import {ethers} from "ethers";
+import store from "../store";
+import {setContractInfo} from "../action";
 
 const abi = [
     "function balanceOf(address owner) view returns (uint256)",
@@ -8,12 +10,21 @@ const abi = [
     "event Transfer(address indexed from, address indexed to, uint amount)"
 ];
 
-export const getContracts = (address, provider) => {
-    const contract = new ethers.Contract(address, abi, provider);
+const getContracts = async (signAddress) => {
+    const { ethereum } = window;
 
-    return {
-        address: contract.address,
-        resolvedAddress: contract.resolvedAddress,
-        deployTransaction: contract.deployTransaction,
-    }
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const contract = new ethers.Contract(signAddress, abi, provider);
+
+    const code = await provider.getCode(signAddress);
+
+    const address = await contract.balanceOf(signAddress);
+    const decimals = await contract.decimals;
+    const symbol = await contract.symbol;
+
+    console.log(address, decimals, symbol, "======address, decimals, symbol=======");
+
+    store.dispatch(setContractInfo({address, decimals, symbol}));
 };
+
+export default getContracts;
