@@ -4,15 +4,14 @@ import {selectAccountInfo, selectContractInfo} from "../../selectors";
 
 
 const AccountInfo = () => {
-    const {balance,transitionCount} = useSelector(selectAccountInfo);
+    const {balance,transitionCount, accountId} = useSelector(selectAccountInfo);
     const contractInfo = useSelector(selectContractInfo);
 
-    console.log(contractInfo, "====contractInfo======");
     return (
-        <section className="crypto-app_section">
+        <section className="crypto-app_section account-info">
             <h1>Account Info</h1>
             <div className='box'>
-                {/*<p>Account ID: {accountInfo}</p>*/}
+                <p>Account ID: {accountId}</p>
                 <p>Balance: {balance}</p>
                 <p>Transition Count: {transitionCount}</p>
                 <p>Contact: {contractInfo.address}</p>

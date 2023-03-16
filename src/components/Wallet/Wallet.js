@@ -13,7 +13,6 @@ const Wallet = () => {
     const { ethereum } = window;
 
     const cryptoButton = async () => {
-        await ethereum.request({ method: "eth_requestAccounts" });
         const accounts = await ethereum.request({ method: "eth_accounts" });
 
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -31,8 +30,6 @@ const Wallet = () => {
             store.dispatch(setConnectedStatus({
                 connectedStatus: true
             }));
-
-
         } else {
             store.dispatch(setConnectedStatus({
                 connectedStatus: false

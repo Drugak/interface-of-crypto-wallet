@@ -1,6 +1,5 @@
 import React from "react";
 import Wallet from "./components/Wallet/Wallet";
-import AccountInfo from "./components/AccountInfo/AccountInfo";
 import News from "./components/News/News";
 import './App.scss';
 import store from "./store";

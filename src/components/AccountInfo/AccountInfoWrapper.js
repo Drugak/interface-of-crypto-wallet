@@ -11,7 +11,7 @@ const AccountInfoWrapper = () => {
     const {connectId} = useSelector(selectConnectID)
 
     useEffect(() => {
-        // getContracts(signAddress)
+        getContracts(signAddress)
         getAccountInfo(signAddress);
     }, [connectId])
 

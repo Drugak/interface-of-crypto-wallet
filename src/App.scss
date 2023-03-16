@@ -47,5 +47,17 @@
       box-sizing: border-box;
       overflow: auto;
     }
+
+    &.account-info {
+      p {
+        hyphens: auto;
+      }
+    }
+
+    .transaction-form {
+      .transaction-button {
+        margin-top: 10px;
+      }
+    }
   }
 }

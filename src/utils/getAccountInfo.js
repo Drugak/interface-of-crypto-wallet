@@ -9,7 +9,15 @@ const getAccountInfo = async (signAddress) => {
     const transitionCount = await provider.getTransactionCount(signAddress);
     const correctBalance = ethers.utils.formatEther(balance)
 
-    store.dispatch(setAccountInfo({balance: correctBalance, transitionCount}))
+    // let etherscanProvider = new ethers.providers.EtherscanProvider();
+    //
+    // etherscanProvider.getHistory(signAddress).then((history) => {
+    //     history.forEach((tx) => {
+    //         console.log(tx, "================");
+    //     })
+    // });
+
+    store.dispatch(setAccountInfo({balance: correctBalance, transitionCount, accountId: signAddress}))
 };
 
 export default getAccountInfo;

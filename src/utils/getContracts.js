@@ -18,13 +18,13 @@ const getContracts = async (signAddress) => {
 
     const code = await provider.getCode(signAddress);
 
-    const address = await contract.balanceOf(signAddress);
-    const decimals = await contract.decimals;
-    const symbol = await contract.symbol;
+    if (code !== '0x') {
+        const address = await contract.balanceOf(signAddress);
+        const decimals = await contract.decimals;
+        const symbol = await contract.symbol;
 
-    console.log(address, decimals, symbol, "======address, decimals, symbol=======");
-
-    store.dispatch(setContractInfo({address, decimals, symbol}));
+        store.dispatch(setContractInfo({address, decimals, symbol}));
+    }
 };
 
 export default getContracts;
