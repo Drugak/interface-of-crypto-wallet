@@ -52,9 +52,12 @@ const Wallet = () => {
                     <AuthButton isDisabled={connectedStatus} callback={cryptoButton}/>
                 </div>
             </div>
-            <div className="box transaction-box">
-                <SendTransaction />
-            </div>
+            {connectedStatus &&
+                <div className="box transaction-box">
+                    <SendTransaction />
+                </div>
+            }
+
         </section>
     )
 }
